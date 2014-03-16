@@ -26,7 +26,33 @@
           <argument>
             <kind>1</kind>
             <string>draw_index = 0;
+popup_index = 0;
 idle = false;
+global._popup_active = false; // prbly shouldnt be here
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="2" enumb="1">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>idle = false;
+popup_index = 0;
 </string>
           </argument>
         </arguments>
@@ -90,12 +116,24 @@ idle = false;
         idle = true;
         alarm[0] = 10;
     }
+    if( device_mouse_check_button(i, mb_left)
+        &amp;&amp; device_mouse_x(i) &gt; 10 &amp;&amp; device_mouse_x(i) &lt; 10+190 &amp;&amp; global._popup_active == false
+        &amp;&amp; device_mouse_y(i) &gt; 100 &amp;&amp; device_mouse_y(i) &lt;100+49 &amp;&amp; idle == false)
+    {
+        popup_index = 1;
+        idle = true;
+        alarm[1] = 10;
+        instance_create(x,y,obj_popup);       
+    }
     
     // general indicator draw
     if(device_mouse_check_button(i, mb_left)){
-        instance_create(device_mouse_x(i), device_mouse_y(i),obj_indicator);
+        if(i==0){
+            instance_create(device_mouse_x(i), device_mouse_y(i),obj_indicator);
+        }else{
+            instance_create(device_mouse_x(i), device_mouse_y(i), obj_rightIndicator);        
+        }
     }
-    
 }
 </string>
           </argument>
@@ -119,18 +157,19 @@ idle = false;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>draw_sprite_ext(sprite3_greyPanel,0,0,0, 3.2, 4.8, 0, c_white, 1);
-
-
-draw_set_font(headerF);
+            <string>draw_set_font(headerF);
 draw_set_color(c_black);
 draw_set_halign(fa_center);
-draw_text(room_width/2, 10, "UI TEST PANEL 1");
+//draw_text(room_width/2, 10, "UI TEST PANEL 1");
 
 draw_set_halign(fa_left);
 draw_set_font(listF);
-draw_text(10, 50, "Enable Help:");
+draw_text(10, 50, "Enable Dragging:");
 draw_sprite(sprite4_emptyBox,draw_index,room_width*(3/4),50);
+
+draw_sprite(sprite6_blueBotton1,popup_index,10,100);
+draw_set_color(c_white);
+draw_text(25,110,"Create Popup");
 
 </string>
           </argument>

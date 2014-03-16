@@ -95,7 +95,7 @@ size = 0.11;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>draw_set_color(c_red);
+            <string>draw_set_color(c_purple);
 draw_circle(x,y,size,false);
 </string>
           </argument>

@@ -10,17 +10,22 @@
     <sprite>sprites\sprite2_blueButton1</sprite>
     <sprite>sprites\sprite3_greyPanel</sprite>
     <sprite>sprites\sprite4_emptyBox</sprite>
+    <sprite>sprites\sprite4</sprite>
+    <sprite>sprites\sprite5_blueClose</sprite>
+    <sprite>sprites\sprite6_blueBotton1</sprite>
   </sprites>
   <backgrounds name="background"/>
   <paths name="paths"/>
-  <scripts name="scripts"/>
   <fonts name="fonts">
     <font>fonts\listF</font>
     <font>fonts\headerF</font>
+    <font>fonts\popupF</font>
   </fonts>
   <objects name="objects">
     <object>objects\obj_backdrop</object>
     <object>objects\obj_indicator</object>
+    <object>objects\obj_rightIndicator</object>
+    <object>objects\obj_popup</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\room0</room>
